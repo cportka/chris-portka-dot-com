@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The format follows Keep
 (https://keepachangelog.com) and the project uses Semantic Versioning (https://semver.org).
 Every change bumps the version and adds an entry below.
 
+## [1.0.1] - 2026-06-28
+
+### Fixed
+- Hero smoke was effectively invisible (low-alpha lavender under a `screen` blend over a dark
+  photo netted almost no lightening). Rebuilt it as two brighter, larger, heavily-blurred plumes
+  that rise and morph, so the wafting actually reads. Still CSS-only and `prefers-reduced-motion`
+  safe.
+
 ## [1.0.0] - 2026-06-28
 
 ### Added
