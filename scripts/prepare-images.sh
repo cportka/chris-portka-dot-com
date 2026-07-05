@@ -69,8 +69,10 @@ fi
 
 # 4. OG image — 1200x630 (Twitter/Slack/iMessage preferred ratio).
 #    Anchored toward the upper portion so the face stays in frame.
+#    -interlace none forces a BASELINE (non-progressive) JPEG — some link
+#    scrapers are flaky with progressive JPEGs; sRGB keeps colors correct.
 "$MAGICK" "$SRC" -auto-orient -resize 1200x1200^ -gravity north -extent 1200x630 \
-  -strip -quality 85 "$OUT/og-image.jpg"
+  -colorspace sRGB -interlace none -strip -quality 85 "$OUT/og-image.jpg"
 echo "  wrote $OUT/og-image.jpg ($(wc -c < "$OUT/og-image.jpg" | awk '{printf "%.0fKB", $1/1024}'))"
 
 echo
