@@ -4,6 +4,21 @@ All notable changes to this project are documented here. The format follows Keep
 (https://keepachangelog.com) and the project uses Semantic Versioning (https://semver.org).
 Every change bumps the version and adds an entry below.
 
+## [1.0.8] - 2026-07-05
+
+### Changed
+- Social sharing audit + polish (the broken X card the audit chased turned out to be X's own
+  stale-cache/re-scrape lag, not our markup — it self-healed on refresh):
+  - Re-encoded `assets/og-image.jpg` from progressive to **baseline** JPEG (some scrapers are flaky
+    with progressive), and taught `scripts/prepare-images.sh` to keep it baseline (`-interlace none`).
+  - Secondary pages (`earlier-work`, `press`, `proto-play`) now share the wide **1200×630**
+    `og-image.jpg` instead of the 2000×2000 square `portrait-hero.jpg`, so their previews stop
+    getting center-cropped. Added `og:image:width/height` to every page.
+  - Album deep pages switched to the `summary` card so their square 800×800 covers show uncropped
+    instead of being cropped by a wide card.
+  - Added `og:image:alt` + `twitter:image:alt` (accessibility) and `twitter:creator` across all pages.
+  - Gave `404.html` a minimal share block so a broken link still previews gracefully.
+
 ## [1.0.7] - 2026-07-04
 
 ### Fixed
