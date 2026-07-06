@@ -4,6 +4,19 @@ All notable changes to this project are documented here. The format follows Keep
 (https://keepachangelog.com) and the project uses Semantic Versioning (https://semver.org).
 Every change bumps the version and adds an entry below.
 
+## [1.2.2] - 2026-07-06
+
+### Changed
+- Lore wisps + a homepage layout tweak:
+  - The lore silhouettes now **drift in and out on the wind** continuously and are **much more
+    transparent** (~10% peak) so they read as whisps. Relocated into the discography section.
+  - The **chicken** stays (a favorite) but is nudged **up to overlap the final outro line** — it's
+    absolutely positioned, so the text never moves.
+  - On desktop, **About and Press now share a row** — About on the left, Press staggered a little
+    lower on the right, a touch more compact — with Recent releases continuing below. Stacks as
+    before on mobile.
+  - Added `overflow-x: hidden` so the drifting wisps can't cause sideways scroll.
+
 ## [1.2.1] - 2026-07-06
 
 ### Changed

@@ -45,6 +45,7 @@ body {
     var(--bg);
   background-attachment: fixed;
   min-height: 100vh;
+  overflow-x: hidden;   /* keep wind-drifting lore wisps from causing sideways scroll */
 }
 /* Film grain — a whisper of 35mm noir texture over everything. Sparse
    light specks (baked into the noise's alpha) drift on a slow shuffle,
@@ -251,37 +252,82 @@ section {
   from { background-position: 0 0; }
   to   { background-position: 90px -520px; }
 }
-/* Lore side-hints — faint silhouettes tucked into the section gutters
-   around the site (referenced from the <symbol> defs near <body>). About
-   20% opacity, with a slow tiny sway so they read as off-to-the-side
-   hints rather than features. The side-whitespace ones hide on narrow
-   screens where there's no gutter to hold them. */
+/* Lore wisps — faint silhouettes that drift in and out on the wind,
+   behind the text (z-index:-1) so they never touch legibility. Kept very
+   transparent (~10% peak) so they read as whisps, not features. The
+   chicken is the exception: it holds still, low in the outro. */
 .lore-symbols { position: absolute; width: 0; height: 0; overflow: hidden; }
-#press, #discography, #stay { position: relative; }
+#discography, #stay { position: relative; }
 .lore-hint {
   position: absolute;
   display: block;
   height: auto;
   color: #b9a6d6;
-  opacity: 0.2;
+  opacity: 0;
   pointer-events: none;
   z-index: 0;
   overflow: visible;
+  will-change: transform, opacity;
+}
+/* two winds, opposite directions, so wisps blow both ways across the page */
+@keyframes lore-wind-a {
+  0%   { opacity: 0;    transform: translate(-70px, 10px) rotate(-5deg) scale(0.95); }
+  22%  { opacity: 0.11; }
+  55%  {                transform: translate(45px, -8px) rotate(3deg) scale(1.03); }
+  80%  { opacity: 0.07; }
+  100% { opacity: 0;    transform: translate(150px, 8px) rotate(6deg) scale(1); }
+}
+@keyframes lore-wind-b {
+  0%   { opacity: 0;    transform: translate(80px, -8px) rotate(5deg) scale(1); }
+  25%  { opacity: 0.10; }
+  55%  {                transform: translate(-35px, 10px) rotate(-3deg) scale(0.96); }
+  82%  { opacity: 0.06; }
+  100% { opacity: 0;    transform: translate(-140px, -6px) rotate(-6deg) scale(1.03); }
+}
+.lore-hint--branch { top: 6%;   left: 3%;  width: 12rem;  animation: lore-wind-a 33s linear infinite; animation-delay: -3s; }
+.lore-hint--owl    { bottom: 24%; right: 8%; width: 4.6rem; animation: lore-wind-b 27s linear infinite; animation-delay: -13s; }
+.lore-hint--moon   { top: 14%;  right: 8%; width: 3.4rem; animation: lore-wind-a 30s linear infinite; animation-delay: -8s; }
+.lore-hint--dog    { bottom: 8%; left: 5%; width: 4.6rem; animation: lore-wind-b 38s linear infinite; animation-delay: -22s; }
+.lore-hint--leaf   { top: 10%;  right: 12%; width: 2.5rem; animation: lore-wind-a 21s linear infinite; animation-delay: -6s; }
+/* chicken — the one the user likes; stays put, low in the outro, nudged
+   up so it overlaps the final line (absolute, so text never shifts). */
+.lore-hint--chicken {
+  bottom: 3.5rem;
+  right: 9%;
+  width: 3.6rem;
+  opacity: 0.2;
+  z-index: 0;
   animation: lore-sway 15s ease-in-out infinite;
 }
 @keyframes lore-sway {
   0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-  50% { transform: translateY(-5px) rotate(-1.2deg); opacity: 0.12; }
+  50% { transform: translateY(-5px) rotate(-1.2deg); opacity: 0.14; }
 }
-.lore-hint--branch  { top: 1.5rem;    right: 4%; width: 11rem;  animation-delay: -2s; }
-.lore-hint--owl     { bottom: 12%;    right: 5%; width: 4.4rem; animation-delay: -7s; }
-.lore-hint--moon    { top: 2rem;      right: 6%; width: 3.2rem; animation-delay: -4s; }
-.lore-hint--dog     { bottom: 10%;    right: 6%; width: 4.4rem; animation-delay: -11s; }
-.lore-hint--chicken { bottom: 1.5rem; right: 8%; width: 3.4rem; animation-delay: -9s; }
-.lore-hint--leaf    { top: 2rem;      left: 9%;  width: 2.4rem; animation-delay: -5s; }
-@media (max-width: 800px) {
-  .lore-hint--branch, .lore-hint--owl,
-  .lore-hint--moon, .lore-hint--dog { display: none; }
+
+/* About + Press — two staggered columns on desktop, stacked on mobile. */
+.about-press > section { position: relative; }
+@media (min-width: 900px) {
+  .about-press {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+    max-width: var(--wide);
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem) var(--gutter);
+  }
+  .about-press > section {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+  .about-press .bio p { max-width: none; }
+  .about-press .press-quotes { max-width: none; }
+  /* stagger: Press sits a little lower than About */
+  .about-press > #press { margin-top: 4.5rem; }
+  /* a touch more compact for breathing room */
+  .about-press .press-quotes li { margin-bottom: 1.75rem; }
+  .about-press .press-quotes li:last-child { margin-bottom: 2rem; }
 }
 .hero-text {
   padding: clamp(2rem, 6vw, 4rem) var(--gutter) clamp(3rem, 8vw, 5rem);
