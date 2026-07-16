@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The format follows Keep
 (https://keepachangelog.com) and the project uses Semantic Versioning (https://semver.org).
 Every change bumps the version and adds an entry below.
 
+## [1.5.1] - 2026-07-16
+
+### Changed
+- The tagline's three words — Musician, Songwriter, Guy — are now three separate floating
+  sticker-objects drifting around the hero text at ~20% opacity, lore-wisp style, instead of one
+  line inside the California. Type up from 23px to 34px so each word actually reads. The hero's
+  real content is layered above them, and the California SVG keeps the tagline as its aria-label.
+
 ## [1.5.0] - 2026-07-16
 
 ### Added
