@@ -820,25 +820,44 @@ a.neon-link.neon-link:hover { color: #f0e7fb; }
   89.5% { opacity: 0; transform: translate(12px,4px) scale(0.4); }
   100% { opacity: 0; transform: translate(0,0) scale(0.4); }
 }
-/* Sticker tagline — "Musician, Songwriter, Guy" in Great Vibes as black
-   core / white band / black rim, like a die-cut sticker slapped over the
-   neon. Three stacked copies because SVG text takes one stroke each.
-   Great Vibes is a delicate calligraphic script, so the bands are thin
-   (2.5/4.6, vs 4.2/7.5 for a heavy face) — any thicker and the loops
-   and counters fill in. */
-.cali-tagline { opacity: 0.7; }
-.cali-tagline text {
+/* Floating tagline words — "Musician" / "Songwriter" / "Guy" as three
+   separate sticker-objects (Great Vibes, black core / white band /
+   black rim) drifting around the hero text at ~20% opacity, lore-wisp
+   style. The hero's real content is lifted above them (z-index) so a
+   drifting word never obscures the name or quote. */
+.float-word {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0.2;
+  z-index: 0;
+  height: auto;
+}
+.float-word text {
   font-family: "Great Vibes", "Brush Script MT", cursive;
   font-weight: 400;
-  font-size: 23px;
+  font-size: 34px;
   letter-spacing: 0;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
-/* bands scale with the type: at 23px these keep the loops open */
-.cali-tagline .ct-outer { fill: none; stroke: #0a070f; stroke-width: 4; }
-.cali-tagline .ct-band  { fill: none; stroke: #f2ecf7; stroke-width: 2.15; }
-.cali-tagline .ct-core  { fill: #0a070f; }
+/* bands scale with the type: at 34px these keep the loops open */
+.float-word .ct-outer { fill: none; stroke: #0a070f; stroke-width: 5.2; }
+.float-word .ct-band  { fill: none; stroke: #f2ecf7; stroke-width: 2.8; }
+.float-word .ct-core  { fill: #0a070f; }
+.float-word--musician   { top: 1.5%;  left: 2%;  width: 10.5rem; animation: word-float-a 26s ease-in-out infinite; }
+.float-word--songwriter { top: 40%;   right: 0;  width: 13rem;   animation: word-float-b 31s ease-in-out infinite; }
+.float-word--guy        { bottom: 6%; left: 12%; width: 6.5rem;  animation: word-float-a 21s ease-in-out infinite reverse; }
+@keyframes word-float-a {
+  0%, 100% { transform: translate(0, 0) rotate(-2.5deg); opacity: 0.2; }
+  50% { transform: translate(14px, -10px) rotate(2deg); opacity: 0.13; }
+}
+@keyframes word-float-b {
+  0%, 100% { transform: translate(0, 0) rotate(2deg); opacity: 0.2; }
+  50% { transform: translate(-16px, 9px) rotate(-2.5deg); opacity: 0.14; }
+}
+.hero-text { position: relative; }
+.hero-text > :not(.float-word) { position: relative; z-index: 1; }
 
 /* Red Room wink — the state's interior is a hidden B&W test pattern
    behind a slowly wind-blown purple/black curtain, glimpsed with a
@@ -889,6 +908,7 @@ a.neon-link.neon-link:hover { color: #f0e7fb; }
   .neon-outnow,
   .album-title,
   .neon-link,
+  .float-word,
   .section-heading::after { animation: none; }
   .neon-404 { animation: none; opacity: 0.85; }
   .cali-spark,

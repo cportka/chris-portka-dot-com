@@ -243,15 +243,26 @@
               <path class="cali-bolt" d="M236 224 l9 -3 l-4 4 l13 -2 l-5 5 l15 1"/>
             </g>
           </g>
-          <!-- sticker-style tagline: black core / white band / black rim,
-               three stacked copies since SVG text takes one stroke each -->
-          <g class="cali-tagline" aria-hidden="true">
-            <text class="ct-outer" x="142" y="148" text-anchor="middle">Musician, Songwriter, Guy</text>
-            <text class="ct-band"  x="142" y="148" text-anchor="middle">Musician, Songwriter, Guy</text>
-            <text class="ct-core"  x="142" y="148" text-anchor="middle">Musician, Songwriter, Guy</text>
-          </g>
         </svg>
       </div>
+      <!-- the tagline's three words float around the hero as mostly
+           transparent sticker-objects, lore-wisp style (the svg above
+           keeps the aria-label, so these are decorative) -->
+      <svg class="float-word float-word--musician" viewBox="0 0 150 62" aria-hidden="true">
+        <text class="ct-outer" x="75" y="40" text-anchor="middle">Musician</text>
+        <text class="ct-band"  x="75" y="40" text-anchor="middle">Musician</text>
+        <text class="ct-core"  x="75" y="40" text-anchor="middle">Musician</text>
+      </svg>
+      <svg class="float-word float-word--songwriter" viewBox="0 0 190 62" aria-hidden="true">
+        <text class="ct-outer" x="95" y="40" text-anchor="middle">Songwriter</text>
+        <text class="ct-band"  x="95" y="40" text-anchor="middle">Songwriter</text>
+        <text class="ct-core"  x="95" y="40" text-anchor="middle">Songwriter</text>
+      </svg>
+      <svg class="float-word float-word--guy" viewBox="0 0 90 62" aria-hidden="true">
+        <text class="ct-outer" x="45" y="40" text-anchor="middle">Guy</text>
+        <text class="ct-band"  x="45" y="40" text-anchor="middle">Guy</text>
+        <text class="ct-core"  x="45" y="40" text-anchor="middle">Guy</text>
+      </svg>
       <blockquote class="hero-quote">
         <p>&ldquo;A David Berman for the Bay.&rdquo;</p>
         <cite><a href="#press">Obscure Sound</a></cite>
