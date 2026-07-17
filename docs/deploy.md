@@ -8,7 +8,7 @@ HTTPS.
 
 1. Cloudflare dashboard → **Pages** → **Create a project** → Connect to
    Git.
-2. Select `cportka/chrisportkawebsite`. Production branch: `main`.
+2. Select `cportka/chris-portka-dot-com`. Production branch: `main`.
    Build command: empty. Build output directory: `/`.
 3. Deploy. You get a `<something>.pages.dev` URL immediately.
 4. Pages → **Custom domains** → add `chrisportka.com` and

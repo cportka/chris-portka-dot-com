@@ -4,6 +4,21 @@ All notable changes to this project are documented here. The format follows Keep
 (https://keepachangelog.com) and the project uses Semantic Versioning (https://semver.org).
 Every change bumps the version and adds an entry below.
 
+## [1.6.0] - 2026-07-17
+
+### Added
+- Header neon across the site, tiered by importance: section headings (homepage + press page)
+  carry a quiet steady halo, the "Stay in tune" mailing-list heading gets a warmer halo with one
+  soft settle per cycle, and the small album headings get the faintest whisper tier. The heroes
+  and subpage titles keep their full neon; the accent rules keep their flicker.
+
+### Changed
+- The three drifting tagline words: opacity down to 8%, a staggered few-second fade-in on page
+  load (0.5s / 2s / 3.5s), a gustier wind loop (uneven waypoints so the drift accelerates in
+  gusts and eases through lulls), and a rare broken-neon stutter — the sticker browns out for a
+  blink then overshoots bright, filter-based so it can't fight the fade.
+- Repository renamed to `chris-portka-dot-com`; the deploy doc reference updated to match.
+
 ## [1.5.2] - 2026-07-17
 
 ### Changed
