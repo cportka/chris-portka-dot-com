@@ -686,7 +686,7 @@ a.neon-link.neon-link:hover { color: #f0e7fb; }
    side. On desktop the SVG is wider and left-aligned to track the
    left-aligned hero column. */
 .hero-cali {
-  margin: calc(-1 * clamp(3.5rem, 7vw + 1rem, 7rem) - 2rem) 0 1.5rem auto;
+  margin: calc(-1 * clamp(3.5rem, 7vw + 1rem, 7rem) - 2rem) 0 1.5rem;
   line-height: 0;
 }
 .hero-cali svg {
@@ -695,6 +695,12 @@ a.neon-link.neon-link:hover { color: #f0e7fb; }
   height: auto;
   display: block;
   overflow: visible;
+  /* Right-align the outline within the full-width block so it tucks behind
+     the centered name. The block itself is full-width, so an auto margin on
+     .hero-cali is a no-op — the SVG has a definite max-width, so auto margins
+     here actually push it to the right edge. (Reset to left on desktop.) */
+  margin-left: auto;
+  margin-right: 0;
 }
 /* Soft neon flicker + glow on the California outline. The stroke holds a
    gentle lavender glow most of the cycle, with two brief, soft flicker
@@ -1159,6 +1165,8 @@ a.neon-link.neon-link:hover { color: #f0e7fb; }
   }
   .hero-cali svg {
     max-width: 24rem;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 

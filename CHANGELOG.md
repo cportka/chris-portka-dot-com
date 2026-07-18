@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format follows Keep
 (https://keepachangelog.com) and the project uses Semantic Versioning (https://semver.org).
 Every change bumps the version and adds an entry below.
 
+## [1.7.1] - 2026-07-18
+
+### Fixed
+- The hero California outline jammed against the far left of the viewport on mobile instead of
+  tucking behind the centered name. The block that holds it is full-width, so its `margin-left:
+  auto` did nothing; the auto right-alignment now lives on the SVG itself (which has a definite
+  width, so auto margins actually push it right) and is reset to left on desktop, where the wider
+  outline still tracks the left-aligned hero column.
+
 ## [1.7.0] - 2026-07-17
 
 ### Added
