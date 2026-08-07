@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format follows Keep
 (https://keepachangelog.com) and the project uses Semantic Versioning (https://semver.org).
 Every change bumps the version and adds an entry below.
 
+## [1.8.0] - 2026-08-07
+
+### Added
+- German review of the "Fun in the Summer" single at We Love That, listed with the other
+  German-language press under *The Album Everyone Wants* (the song is track 2) and tagged with the
+  track it covers.
+
 ## [1.7.1] - 2026-07-18
 
 ### Fixed
