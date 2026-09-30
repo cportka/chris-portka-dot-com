@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The format follows Keep
 (https://keepachangelog.com) and the project uses Semantic Versioning (https://semver.org).
 Every change bumps the version and adds an entry below.
 
+## [1.9.0] - 2026-09-30
+
+### Added
+- Heatwave's Portuguese-language review of the "Fun in the Summer" single, listed with the other
+  Portuguese press under *The Album Everyone Wants* and tagged with the track it covers.
+
 ## [1.8.0] - 2026-08-07
 
 ### Added
